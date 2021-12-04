@@ -18,18 +18,18 @@ module.exports = (sequelize) => {
     },
     
     description: {
-      type: DataTypes.TEXT, //text
+      type: DataTypes.STRING, //text
       allowNull: false,
     },
     
     released: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY, //STRING //DATEONLY
       allowNull: true, // no son obligatorias
       
     },
     
     rating: {
-      type: DataTypes.DECIMAL, //number fijarse bien, ya que de la api viene como decimal
+      type: DataTypes.FLOAT, //FLOATnumber fijarse bien, ya que de la api viene como decimal
       allowNull: true, // no son obligatorias
       
     },
@@ -42,7 +42,7 @@ module.exports = (sequelize) => {
     background_image:{
 
       type: DataTypes.STRING,
-      allowNull: true
+      
 
     },
 

@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Videogame, Gender } = require('../db')
+const { Videogame, Genre } = require('../db')
 const { v4: uuid } = require("uuid")
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -18,34 +18,7 @@ const router = Router();
 
 //Get info de la API
 
-/* const getinfoApi = async () => {
-    const apiUrl = page => axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`)
-    const pages = [apiUrl(1), apiUrl(2), apiUrl(3), apiUrl(4), apiUrl(5), apiUrl(6)]
-    const games = []
-    await Promise.all(pages)
-        .then(responses => {
-            responses.forEach(response => games.push(
-                response.data.results.map(g => {
-                    
-                    return {
-                        id: g.id,
-                        name: g.name,
-                        background_image: g.background_image,
-                        rating: g.rating,
-                        genres: g.genres.map(gender => gender.name),
-                        platforms: g.platforms.map(platform => platform.platform.name)
-                    }
-                })
-            ))
-        })
-        .catch(error => {
-            return error
-        })
-    return games
 
-} */
-
- 
 const getGameApi = async () => {
     try{
     const games = []
@@ -53,7 +26,7 @@ const getGameApi = async () => {
     //creo un array para poder pushear lo que me traiga de la api. Guardo la url en una variable
                                    //RECORDAR COLOCAR i<=5 PARA QUE TRAIGA LOS 100, Y COLOCAR EN FORCE DEL INDEX EN TRUE
      
-    for( let i = 1; i<= 1; i++){ //como no se puede hacer un paginado recorro la cantidad de paginas q necesite traer. 
+    for( let i = 1; i<= 5; i++){ //como no se puede hacer un paginado recorro la cantidad de paginas q necesite traer. 
         let pages = await axios.get(url) // hago llamado a la api para traer la info
         
         
@@ -61,7 +34,7 @@ const getGameApi = async () => {
             games.push({ // pusheo al array vacio que cree, para tener la info local
                 id: g.id,
                 name: g.name,
-                img: g.background_image,
+                background_image: g.background_image, // en lo de otros dice brack_ground
                 rating: g.rating,
                 genres: g.genres.map(gender => gender.name),
                 platforms: g.platforms.map(platform => platform.platform.name)
@@ -83,15 +56,29 @@ const getGameApi = async () => {
 
 const getGameDataBase = async function (){
     try{
-    return await Videogame.findAll({
-        include:{
-            model: Gender,
+    let dataBase = await Videogame.findAll(
+        {include:{
+            model: Genre,
             attributes: ['name'],
             through: {
                 attributes:[]
             },
-        }
-    })
+        }})
+    const dbGame = dataBase.map((e) =>{
+        return {
+        id: e.id,
+        name: e.name,
+        rating: e.rating,
+        background_image: e.background_image,
+        genres: e.genres.map(e => e.name),
+        description: e.description,
+        released:e.released,
+        createdVideoGame: e.createdVideoGame,
+        plataforms: e.plataforms//e.plataforms.map(p=> p.plataforms.name)
+
+
+    }})       
+    return  dbGame
 
   } catch(error){return error}
 };
@@ -103,6 +90,7 @@ const getinfoAll = async function (){
 
     let apiData = await getGameApi();
     let dbData = await getGameDataBase();
+    
     const totalData = apiData.concat(dbData);
     return totalData;
 
@@ -116,14 +104,18 @@ router.get('/videogames', async function(req,res){
     try{
 
     let allGames = await getinfoAll();
+    
 
     if(name){
         let videogameName = await allGames.filter( g => g.name.toLowerCase().includes(name.toLowerCase()))
         // toLowerCase se encarga de pasar todo a minuscula para que no haya un conflicto entre lo q traemos de api y lo q escribe el usuairo
       // por que si queremos hacer una busqueda en Mayu no tiraria error ya que por detras todo se pasa a minuscula. El includes hace una busqueda global, 
       //o sea que no importa si el nombre esta al principio o es una parte te trae todo lo relacionado a ese texto que se escribio
+      
       if(videogameName.length){
+        
           res.status(200).json(videogameName)
+
       } else { 
 
         res.status(404).send('No se encuentra ese video juego') }
@@ -140,8 +132,6 @@ router.get('/videogames', async function(req,res){
 //Incluir los géneros asociados
 
 router.get('/videogame/:id', async function(req,res){
-
-
     try{    
 
     const { id } = req.params;
@@ -151,6 +141,7 @@ router.get('/videogame/:id', async function(req,res){
         
         let gameCreated = await getGameDataBase()
         let gameID = await gameCreated.filter(gi => gi.id === id)
+        
 
        /*  if (gameID !== undefined){
             return res.status(200).json({data:gameID, message:'Juego encontrado'})
@@ -165,11 +156,13 @@ router.get('/videogame/:id', async function(req,res){
             const oneGame = {
                 id: gameById.data.id,
                 name: gameById.data.name,
-                img: gameById.data.background_image,
+                background_image: gameById.data.background_image,
                 rating: gameById.data.rating,
+                released:gameById.data.released,//
                 description: gameById.data.description,
-                genres: gameById.data.genres.map(gender => gender.name),
+                genres: gameById.data.genres.map(g => g.name),
                 platforms: gameById.data.parent_platforms.map(p => p.platform.name)
+                
             }
            
         return res.status(200).json(oneGame)
@@ -191,11 +184,11 @@ router.get('/genres', async function(req, res){
     
     const genres = genresApi.data.results.map(g => g.name)
     
-    genres.forEach(el => { Gender.findOrCreate({ where : { name: el}})
+    genres.forEach(el => { Genre.findOrCreate({ where : { name: el}})
         
     });  
 
-    const allGenres = await Gender.findAll();
+    const allGenres = await Genre.findAll();
     
     res.send(allGenres);
 
@@ -212,16 +205,16 @@ router.post('/videogame', async function (req, res){
 
     try{
 
-    let { name, img, description, released , rating , genres , plataforms, createdVideoGame } = req.body
+    let { name, background_image, description, released , rating , genres , plataforms, createdVideoGame } = req.body
     
     if(!name || !description || !plataforms){ // le pregunto si estan esos datos, sino debe completarlos
         return res.status(404).send('Falta datos para la creacion del juego')
-    }
+    } else {
 
     let newGame = await Videogame.create({ // creo mi video juegos en la base de datos
                
                 name,
-                img,
+                background_image,
                 description,
                 released,
                 rating,
@@ -232,16 +225,15 @@ router.post('/videogame', async function (req, res){
     
     genres.forEach( async g => {// recorro por los generos que me pasen y los busco en mi base de datos
         
-        let genderDB = await Gender.findAll({where: {name: g.name}})
-        newGame.addGender(genderDB) // le agrego a mi juego creado el genero seleccionado de la base
+        let genderDB = await Genre.findAll({where: {name: g.name}})
+        newGame.addGenre(genderDB) // le agrego a mi juego creado el genero seleccionado de la base
+        
     })
-     res.status(200).send('Juego creado con exito');
+    res.status(200).json({message: 'Juego creado con exito',newGame})}
         
     } catch(error){ return error }
             
 });
-
-
 
 
 

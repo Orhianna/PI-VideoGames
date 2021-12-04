@@ -11,4 +11,4 @@ export default function LandingPage(){
             </Link>
         </dic>
     )
-}
+};
