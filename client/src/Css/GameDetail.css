@@ -1,0 +1,200 @@
+.Fondo-Detail{
+    background-image: url('../img/GradienteHori1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    background-attachment: fixed;
+    overflow:scroll;
+}
+
+
+
+.Conte-General{
+    /* box-sizing: border-box;
+    border-radius: 5px;
+    border-color: #00A2F0;
+    background-color: rgba(255, 255, 255, 0.945);
+    box-shadow: 1px 1px 18px #00A2F0; */
+}
+
+.Conte-Sub{
+    box-sizing: border-box;
+    border-radius: 5px;
+    border-color: #00A2F0;
+    background-color: rgba(255, 255, 255, 0.185);
+    box-shadow: 1px 1px 18px #080808;
+    margin-top: 1.5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+
+.TituloDetail{
+    font-family: 'Staatliches';
+    text-align: center;
+    position: relative;
+    letter-spacing: 8px;
+    font-size: 3rem;
+    color: #FFFFFF;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    text-shadow: 2px 2px 15px rgb(9, 182, 235);
+
+}
+
+
+.ImagenDetail{
+    height: 400px;
+    width: 700px;
+    vertical-align: middle;
+    padding: 0;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.767);
+    border-radius: 8px;
+
+}
+
+.TituloRating{
+    font-family:'Red Hat Display', Black 900;
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    
+
+}
+
+.Conte-Rating{
+  color: hsl(0, 0%, 100%);
+  font-size: 1.1rem;
+  line-height: 2.3rem;
+  align-items: center;
+  font-weight: 400;
+  min-width: 10px;
+  font-family:'Red Hat Display', sans-serif;
+  margin-top: 10px;
+}
+
+.TituloFecha{
+    font-family:'Red Hat Display', Black 900;
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+
+}
+
+.Conte-Fecha {
+    color: hsl(0, 0%, 100%);
+  font-size: 1.1rem;
+  line-height: 2.3rem;
+  align-items: center;
+  font-weight: 400;
+  min-width: 10px;
+  font-family:'Red Hat Display', sans-serif;
+  margin-top: 10px;
+}
+
+.TituloPlataforma{
+    font-family:'Red Hat Display', Black 900;
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+
+}
+
+.Conte-Plataform{
+    color: hsl(0, 0%, 100%);
+  font-size: 1.1rem;
+  line-height: 2.3rem;
+  align-items: center;
+  font-weight: 400;
+  min-width: 10px;
+  font-family:'Red Hat Display', sans-serif;
+  margin-top: 10px;
+}
+
+.TituloGeneros{
+    font-family:'Red Hat Display', Black 900;
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+
+
+}
+
+.Conte-Generos{
+  color: hsl(0, 0%, 100%);
+  font-size: 1.1rem;
+  line-height: 2.3rem;
+  align-items: center;
+  font-weight: 400;
+  min-width: 10px;
+  font-family:'Red Hat Display', sans-serif;
+  margin-top: 10px;
+}
+
+.TituloDescripcion{
+    font-family:'Red Hat Display', Black 900;
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+
+}
+
+
+.Descripcion-Detalle{
+  color: hsl(0, 0%, 100%);
+  font-size: 1.1rem;
+  line-height: 2.3rem;
+  align-items: center;
+  font-weight: 400;
+  min-width: 10px;
+  font-family:'Red Hat Display', sans-serif;
+  margin-top: 10px;
+}
+
+.Boton-Volver-Det{
+    padding: 0.9em 2.5em;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #00A2F0;
+    background-color: #fff;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    
+    /* margin-right:30%; */
+    /* margin-inline-start: 10%; */
+    /* margin-inline-end: 55%; */
+    font-family:'Red Hat Display', sans-serif;
+
+}
+
+.Boton-Volver-Det:hover {
+background-color: #7ccdf4;
+box-shadow: 0px 15px 20px #00A2F0;
+color: #fff;
+transform: translateY(-4px);
+}
+
+.Boton-Volver-Det:active {
+transform: translateY(-1px);
+}
+
+.Contenedor-Boton-Volver{
+    margin-bottom: 19px;
+    margin-top: 1%;
+
+}

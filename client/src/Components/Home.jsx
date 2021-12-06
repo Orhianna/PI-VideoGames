@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import GameCard from "./GameCard";
 import Paginate from "./Paginate";
 import SearchBar from './SearchBar'
+import '../Css/Home.css'
 
 
 export default function Home (){
@@ -72,38 +73,42 @@ export default function Home (){
 
 
     return(
-        <div>
+        <div className="Fondo-Home">
 
-            <button onClick={e => {handleClick(e)}}>Refresh</button>
-            <Link to='/newvideogame'>Crear Video Juego</Link>
+            <div className="Barra-Superior">
+            <button className="Refresh-Boton"onClick={e => {handleClick(e)}}>Refresh</button>
+            <Link to='/newvideogame'><button className="Crear-Video">Crear Video Juego</button></Link>
+            </div>
+            <h1 className="Titulo">VIDEOS JUEGOS</h1>
             
-            <SearchBar/>
 
-            <h1>VIDEO JUEGOS</h1>
+            <SearchBar/>
                         
             <div>
-                <label>Orden Alfabetico</label>
-                <select onChange={(e) => handleSort(e)}>
+                <label className="Subtitulo">Orden Alfabetico</label>
+                <select className="Selector" onChange={(e) => handleSort(e)}>
                     <option value= 'az'>A-Z</option>
                     <option value= 'za'>Z-A</option>
                 </select>
-                <label>Generos</label>
-                <select onChange={(e) => handleFilterVideoGamesByGenres(e)}>
+                <label className="Subtitulo">Generos</label>
+                <select className="Selector" onChange={(e) => handleFilterVideoGamesByGenres(e)}>
                     <option value='All'>Todos</option>
                     {allGenres.map(g => <option key={g.id} value={g.name}>{g.name}</option>)}
                     
                 </select>
-                <label>Rating</label>
-                <select onChange={(e) => handleSortRating(e)}>
+                <label className="Subtitulo">Rating</label>
+                <select  className="Selector" onChange={(e) => handleSortRating(e)}>
                     <option value= 'Max-Min'>Max a Min</option>
                     <option value= 'Min-Max'>Min a Max</option>
                 </select>
-                <label>Juegos creados</label>
-                <select onChange={(e) => handleFilterVideoGamesDB(e)}>
+                <label className="Subtitulo">Juegos creados</label>
+                <select className="Selector" onChange={(e) => handleFilterVideoGamesDB(e)}>
                     <option value= 'All'>Todos</option>
                     <option value= 'db'>Juegos Creados</option>
                     <option value= 'api'>Existentes</option>
                 </select>
+
+                <div className="Card-Contenedor">
 
                 {
                     currentVideoGames && currentVideoGames.map( g => {
@@ -122,6 +127,7 @@ export default function Home (){
                         )
                     })
                 }
+                </div>
                 <Paginate
                 videoGamesPerPage={videoGamesPerPage}
                 allGames={allGames.length}

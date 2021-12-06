@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import {getGameDetail } from '../Actions/index';
 import { useEffect } from "react";
+import '../Css/GameDetail.css'
 
 
 
@@ -20,57 +21,63 @@ export default function GameDetail(props){
     const aGame = useSelector ((state) => state.gamedetail)
   
     return(
-        <div>
+        <div className="Fondo-Detail">
             {  
              
                 aGame.length > 0 ?
-                <div>
-                    <h1>{aGame.map(el => el.name )}</h1>
-                    <img src={aGame.map(el => el.background_image)} alt="" width="400px" height="300px"/>
-                    
-                    <h4>Rating : </h4>
-                    <p>{aGame.map(el => el.rating)}</p>
-
-                    <h4>Fecha de Lanzamiento : </h4>
-                    <p>{aGame.map(el => el.released)}</p>
-                    
-                    <h4>Plataformas : </h4>
-                    <p>{aGame.map(el => el.plataforms + ' ')}</p>
-                    
-                    <h4>Generos : </h4>
-                    <p>{aGame.map(el => el.genres + ' ')}</p>
-                    
-                    <h4>Descripción :</h4>
-                    <p>{aGame.map(el => el.description)}</p>
-
-                </div> :  <div>
-                    
-                    <h1>{aGame.name}</h1>
-                    <img src={aGame.background_image} alt="" width="400px" height="300px"/>
+                <div className="Conte-General">
+                    <h1 className="TituloDetail" >{aGame.map(el => el.name )}</h1>
+                    <img className="ImagenDetail" src={aGame.map(el => el.background_image)} alt=""/>
                    
-                    <h4>Rating :</h4>
-                    <p>{aGame.rating}</p>
+                   <div className="Conte-Sub"> 
 
-                    <h4>Fecha de Lanzamiento :</h4>
-                    <p>{aGame.released}</p>
+                    <h4 className="TituloRating">⭐ Rating : </h4>
+                    <p className="Conte-Rating">{aGame.map(el => el.rating)}</p>
+
+                    <h4 className="TituloFecha">📆 Fecha de Lanzamiento : </h4>
+                    <p className="Conte-Fecha">{aGame.map(el => el.released)}</p>
                     
-                    <h4>Plataformas :</h4>
-                    <div>{' ' + aGame.platforms + ' '}</div>
+                    <h4 className="TituloPlataforma">🎮 Plataformas : </h4>
+                    <p className="Conte-Plataform">{aGame.map(el => el.plataforms + ' ')}</p>
+                    
+                    <h4 className="TituloGeneros">⚔ Generos : </h4>
+                    <p className="Conte-Generos">{aGame.map(el => el.genres + ' ')}</p>
+                    
+                    <h4 className="TituloDescripcion">📜 Descripción :</h4>
+                    <p className="Descripcion-Detalle" >{aGame.map(el => el.description)}</p>
+                    </div>
+
+                </div> :  <div className="Conte-General">
+                    
+                    <h1 className="TituloDetail">{aGame.name}</h1>
+                    <img className="ImagenDetail" src={aGame.background_image} alt=""/>
+                   
+                   <div className="Conte-Sub">
+
+                    <h4 className="TituloRating">⭐ Rating :</h4>
+                    <p className="Conte-Rating">{aGame.rating}</p>
+
+                    <h4 className="TituloFecha">📆 Fecha de Lanzamiento :</h4>
+                    <p className="Conte-Fecha">{aGame.released}</p>
+                    
+                    <h4 className="TituloPlataforma">🎮 Plataformas :</h4>
+                    <div className="Conte-Plataform">{' ' + aGame.platforms + ' '}</div>
 
 
-                    <h4>Generos :</h4>
-                    <div>{' '+ aGame.genres + ' '}</div>
+                    <h4 className="TituloGeneros">⚔ Generos :</h4>
+                    <div className="Conte-Generos">{' '+ aGame.genres + ' '}</div>
                         
-                    <h4>Descripción :</h4>
-                    <p dangerouslySetInnerHTML={{__html: aGame.description}}/>
-                   
+                    <h4 className="TituloDescripcion">📜 Descripción :</h4>
+                    <p className="Descripcion-Detalle" dangerouslySetInnerHTML={{__html: aGame.description}}/>
+                    </div>
                     </div>
                              
             }
-            
+            <div className="Contenedor-Boton-Volver">
             <Link to='/home'>
-                <button>Volver</button>
+                <button className="Boton-Volver-Det">Volver</button>
             </Link>
+            </div>
         </div>
 
        

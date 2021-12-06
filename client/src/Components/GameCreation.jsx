@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { createVideoGame, getGenres } from '../Actions'
+import '../Css/GameCreation.css'
 
 
 
@@ -88,12 +89,12 @@ export default function GameCreation(){
    
     return(
         <div>
-            <Link to='/home'><button>Volver</button></Link>
+            <Link to='/home'><button className="Boton-Volver">Volver</button></Link>
             <h1>Crea tu Juego</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                    <lable>Nombre :</lable>
-                    <input type='text' onChange={(e) => handleChange(e)} value={input.name} name='name'/>
+                <div className="Cont-Nombre">
+                    <lable className="Nombre">Nombre :</lable>
+                    <input className="InputNombre"type='text' onChange={(e) => handleChange(e)} value={input.name} name='name'/>
                     
                 </div>
                 <div>

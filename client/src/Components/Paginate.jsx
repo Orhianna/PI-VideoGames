@@ -1,4 +1,5 @@
 import React from "react";
+import '../Css/Paginate.css'
 
 export default function Paginate ({videoGamesPerPage, allGames,paging}){
     const pages = []
@@ -8,11 +9,11 @@ export default function Paginate ({videoGamesPerPage, allGames,paging}){
     }
 
     return(
-        <nav>
+        <nav >
             <ul>
                 {pages?.map(num =>(
-                    <li key={num}>
-                        <a onClick={()=>paging(num)}>{num}</a>
+                    <li className="Paginado" key={num}>
+                        <button className="BotonPaginado" onClick={()=>paging(num)}>{num}</button>
                     </li>
                 ))}
             </ul>
