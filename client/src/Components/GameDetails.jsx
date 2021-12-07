@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
-import {getGameDetail } from '../Actions/index';
+import {getGameDetail, resetDetailPage } from '../Actions/index';
 import { useEffect } from "react";
 import '../Css/GameDetail.css'
 
@@ -16,7 +16,14 @@ export default function GameDetail(props){
         
     useEffect(() => {
         dispatch(getGameDetail(id))
-    }, [dispatch])
+        return ()=>{
+            dispatch(resetDetailPage())
+        }
+    },[dispatch, id])
+
+   /*  useEffect(() => { //antes de que hiciera el refresh estaba asi
+        dispatch(getGameDetail(id))   
+    },[dispatch]) */
 
     const aGame = useSelector ((state) => state.gamedetail)
   

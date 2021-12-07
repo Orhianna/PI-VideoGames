@@ -91,3 +91,9 @@ export function getGameDetail(id){
         }
     }    
 };
+
+export function resetDetailPage(){ //reset para la pagina de detail
+    return({
+        type: 'RESET_DETAIL_PAGE',
+    })
+};

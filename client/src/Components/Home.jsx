@@ -117,7 +117,7 @@ export default function Home (){
                         <Link to={'/home/' + g.id}>
 
                         <GameCard name={g.name} 
-                                  background_image={g.background_image} //img={g.img ? g.img : g.background_image}//Ver porque las tarjetas que yo creo no cargan la imagen
+                                  background_image={g.background_image} 
                                   rating={g.rating} 
                                   genres={g.genres}
                                   key={g.id} />
@@ -134,9 +134,6 @@ export default function Home (){
                 paging={paging}/>
 
             </div>
-
-
-
 
         </div>
     )

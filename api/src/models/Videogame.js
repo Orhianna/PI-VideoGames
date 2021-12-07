@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
     },
     
     description: {
-      type: DataTypes.STRING, //text
+      type: DataTypes.STRING, 
       allowNull: false,
     },
     
@@ -43,7 +43,6 @@ module.exports = (sequelize) => {
 
       type: DataTypes.STRING,
       
-
     },
 
     createdVideoGame: { //esta propiedad me sirve para consultar solo aquellos juegos creados en mi base de datos

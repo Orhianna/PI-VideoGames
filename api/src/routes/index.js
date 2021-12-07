@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { Videogame, Genre } = require('../db')
-const { v4: uuid } = require("uuid")
+
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -111,9 +111,11 @@ router.get('/videogames', async function(req,res){
         // toLowerCase se encarga de pasar todo a minuscula para que no haya un conflicto entre lo q traemos de api y lo q escribe el usuairo
       // por que si queremos hacer una busqueda en Mayu no tiraria error ya que por detras todo se pasa a minuscula. El includes hace una busqueda global, 
       //o sea que no importa si el nombre esta al principio o es una parte te trae todo lo relacionado a ese texto que se escribio
+      //const just15 = [...videogameName, ...allGames.splice(0, 15)];
       
+
       if(videogameName.length){
-        
+          //return res.status(200).json(just15)
           res.status(200).json(videogameName)
 
       } else { 
@@ -214,7 +216,7 @@ router.post('/videogame', async function (req, res){
     let newGame = await Videogame.create({ // creo mi video juegos en la base de datos
                
                 name,
-                background_image,
+                background_image: background_image || 'https://i.vimeocdn.com/video/1258433796-67fedf3d36cabe23cfd1f958c3e385f155217ab46b2048688_640x360.jpg' ,
                 description,
                 released,
                 rating,

@@ -2,6 +2,7 @@
 const initialState = {
     videogames : [],
     allvideogames: [],
+    reload:[],
     genres:[],
     gamedetail:[]
     
@@ -15,7 +16,8 @@ function rootReducer(state = initialState, action){
             return{
                 ...state,
                 videogames: action.payload, // aca le digo que en mi estado videogames que es un arreglo vacio, que mande todo lo que
-                allvideogames: action.payload                        // la accion 'GET_VIDEOGAMES' me traiga.
+                allvideogames: action.payload,
+                reload: action.payload                        // la accion 'GET_VIDEOGAMES' me traiga.
             }
 
         
@@ -110,6 +112,12 @@ function rootReducer(state = initialState, action){
                     ...state,
                     videogames: orderGamesRating
                 }
+
+            case 'RESET_DETAIL_PAGE':
+              return{
+                  ...state,
+                  gamedetail:[]
+              }
 
             
         default: return state;

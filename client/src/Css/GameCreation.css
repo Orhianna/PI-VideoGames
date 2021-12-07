@@ -1,11 +1,267 @@
-.Boton-Volver{
+.Fondo-Form{
+    background-image: url('../img/GradienteHori1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    background-attachment: fixed;
+    overflow:scroll;
 
 }
 
-.Cont-Nombre{
+
+.Boton-Crea{
+    padding: 0.9em 2.5em;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #00A2F0;
+    background-color: #fff;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    font-family:'Red Hat Display', sans-serif;
 
 }
 
-.Nombre{
+.Boton-Crea:hover {
+    background-color: #7ccdf4;
+    box-shadow: 0px 15px 20px #00A2F0;
+    color: #fff;
+    transform: translateY(-4px);
+    }
+    
+.Boton-Crea:active {
+    transform: translateY(-1px);
+    }
+
+
+.Contenedor-Boton-Volver-Crea{
+    display:absolute;
+    top: 15px;
+    left: 15px;
+    Position: fixed
+
 
 }
+
+
+.Contenedor-Boton-Submit{
+    margin-top: 5%;
+
+}
+
+.Titulo-Pag-Crea{
+    font-family: 'Staatliches';
+    text-align: center;
+    position: relative;
+    letter-spacing: 8px;
+    font-size: 3rem;
+    color: #FFFFFF;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    text-shadow: 2px 2px 15px rgb(9, 182, 235);
+
+}
+
+.Contenedor-Form{
+
+    /* background-color: rgba(255, 255, 255, 0.315); */
+    background-color: rgba(255, 255, 255, 0.185);
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-bottom: 4%;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 18px #00A2F0;
+    /* box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); */
+
+
+}
+.Sub-Contenedores-Form{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    justify-content: left;
+
+}
+
+.Nombre-Form{
+    font-family:'Staatliches';
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    margin-right: 1%;
+    padding-right: 2%;
+
+}
+
+.InputNombre-Form{
+    height: 2em;
+    width: 400px;
+    margin-right: 8px;
+    border-radius: 5px;
+    border-color: #00A2F0;
+    background-color: rgba(255, 255, 255, 0.945);
+    font-size: 16px;
+    font-family:'Red Hat Display', sans-serif;
+    box-shadow: 1px 1px 18px #00A2F0;
+
+}
+
+.Descripción-Form{
+    font-family:'Staatliches';
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    margin-right: 1%;
+}
+
+.InputDescripción-Form{
+    height: 2em;
+    width: 400px;
+    margin-right: 8px;
+    border-radius: 5px;
+    border-color: #00A2F0;
+    background-color: rgba(255, 255, 255, 0.945);
+    font-size: 16px;
+    font-family:'Red Hat Display', sans-serif;
+    box-shadow: 1px 1px 18px #00A2F0;
+
+}
+
+.Fecha-Form{
+    font-family:'Staatliches';
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    margin-right: 1%;
+}
+
+.InputFecha-Form{
+    height: 2em;
+    width: 322px;
+    margin-right: 8px;
+    border-radius: 5px;
+    border-color: #00A2F0;
+    background-color: rgba(255, 255, 255, 0.945);
+    font-size: 16px;
+    font-family:'Red Hat Display', sans-serif;
+    box-shadow: 1px 1px 18px #00A2F0;
+
+}
+
+.Rating-Form{
+    font-family:'Staatliches';
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    margin-right: 1%;
+    padding-right: 9%;
+}
+
+.InputRating-Form{
+    height: 2em;
+    width: 322px;
+    margin-right: 8px;
+    border-radius: 5px;
+    border-color: #00A2F0;
+    background-color: rgba(255, 255, 255, 0.945);
+    font-size: 16px;
+    font-family:'Red Hat Display', sans-serif;
+    box-shadow: 1px 1px 18px #00A2F0;
+
+}
+
+.Imagen-Form{
+    font-family:'Staatliches';
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    margin-right: 1%;
+    padding-right: 3.3%;
+}
+
+.InputImagen-Form{
+    height: 2em;
+    width: 400px;
+    margin-right: 8px;
+    border-radius: 5px;
+    border-color: #00A2F0;
+    background-color: rgba(255, 255, 255, 0.945);
+    font-size: 16px;
+    font-family:'Red Hat Display', sans-serif;
+    box-shadow: 1px 1px 18px #00A2F0;
+    
+
+}
+
+.Plataformas-Form{
+    font-family:'Staatliches';
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    margin-right: 1%;
+}
+
+.InputPlataformas-Form{
+  color: hsl(0, 0%, 100%);
+  font-size: 1.1rem;
+  line-height: 2.3rem;
+  align-items: center;
+  font-weight: 400;
+  min-width: 10px;
+  font-family:'Red Hat Display', sans-serif;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+
+}
+
+.Generos-Form{
+    font-family:'Staatliches';
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 2%;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    margin-right: 1%;
+    
+}
+
+.InputGeneros-Form{
+  color: hsl(0, 0%, 100%);
+  font-size: 1.1rem;
+  line-height: 2.3rem;
+  align-items: center;
+  font-weight: 400;
+  min-width: 10px;
+  font-family:'Red Hat Display', sans-serif;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+.Box-Check{
+    color: rgb(255, 255, 255);
+    height: 15px;
+    width:15px ;
+    margin-right: 10px;
+  
+    
+}
+
