@@ -42,10 +42,10 @@ export default function GameDetail(props){
                     <p className="Conte-Fecha">{aGame.map(el => el.released)}</p>
                     
                     <h4 className="TituloPlataforma">🎮 Plataformas : </h4>
-                    <p className="Conte-Plataform">{aGame.map(el => el.plataforms + ' ')}</p>
+                    <p className="Conte-Plataform">{ aGame && aGame.map(el => el.plataforms.join(",  "))}</p>
                     
                     <h4 className="TituloGeneros">⚔ Generos : </h4>
-                    <p className="Conte-Generos">{aGame.map(el => el.genres + ' ')}</p>
+                    <p className="Conte-Generos">{ aGame && aGame.map(el => el.genres.join(",  "))}</p>
                     
                     <h4 className="TituloDescripcion">📜 Descripción :</h4>
                     <p className="Descripcion-Detalle" >{aGame.map(el => el.description)}</p>
@@ -65,11 +65,11 @@ export default function GameDetail(props){
                     <p className="Conte-Fecha">{aGame.released}</p>
                     
                     <h4 className="TituloPlataforma">🎮 Plataformas :</h4>
-                    <div className="Conte-Plataform">{' ' + aGame.platforms + ' '}</div>
+                    <div className="Conte-Plataform">{aGame.platforms && aGame.platforms.join(",  ")}</div>
 
 
                     <h4 className="TituloGeneros">⚔ Generos :</h4>
-                    <div className="Conte-Generos">{' '+ aGame.genres + ' '}</div>
+                    <div className="Conte-Generos">{aGame.genres && aGame.genres.join(",  ")}</div>
                         
                     <h4 className="TituloDescripcion">📜 Descripción :</h4>
                     <p className="Descripcion-Detalle" dangerouslySetInnerHTML={{__html: aGame.description}}/>
