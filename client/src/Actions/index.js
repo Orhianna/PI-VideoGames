@@ -97,3 +97,4 @@ export function resetDetailPage(){ //reset para la pagina de detail
         type: 'RESET_DETAIL_PAGE',
     })
 };
+

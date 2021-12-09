@@ -19,7 +19,7 @@
   overflow: hidden;
   background-size: auto;
   flex-basis: 430px;
-  height: 470px;
+  height: 480px;
 }
 
 
@@ -56,11 +56,18 @@ a:link, a:visited, a:active {
   font-family:'Red Hat Display', Black 900;
   font-size: 1.5rem;
   margin-left: 80%;
+  margin-right: 5%;
   margin-bottom: 18px;
   min-width: 10px;
-  /* padding-top: 5%; */
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   line-height: 2.8rem;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
+  background-color:#00a0f08f ;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 20px #00A2F0;
 
 }
 
@@ -72,6 +79,8 @@ a:link, a:visited, a:active {
   font-weight: 400;
   min-width: 10px;
   font-family:'Red Hat Display', sans-serif;
+  margin-bottom: 5px;
+ 
   
 }
 

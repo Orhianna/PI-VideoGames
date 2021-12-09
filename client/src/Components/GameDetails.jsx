@@ -21,10 +21,7 @@ export default function GameDetail(props){
         }
     },[dispatch, id])
 
-   /*  useEffect(() => { //antes de que hiciera el refresh estaba asi
-        dispatch(getGameDetail(id))   
-    },[dispatch]) */
-
+  
     const aGame = useSelector ((state) => state.gamedetail)
   
     return(
@@ -80,9 +77,9 @@ export default function GameDetail(props){
                     </div>
                              
             }
-            <div className="Contenedor-Boton-Volver">
+            <div className="Contenedor-Boton-Volver-Det">
             <Link to='/home'>
-                <button className="Boton-Volver-Det">Volver</button>
+                <button className="Boton-Volver-Det">◀ Volver</button>
             </Link>
             </div>
         </div>

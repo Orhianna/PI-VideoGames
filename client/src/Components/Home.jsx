@@ -31,7 +31,7 @@ export default function Home (){
     //-------------
 
     useEffect(()=>{ // esto trae los generos
-        dispatch(getGenres())
+       dispatch(getGenres())
     },[dispatch])
 
     
@@ -42,6 +42,7 @@ export default function Home (){
     function handleClick(e){
         e.preventDefault();
         dispatch(getVideoGames());
+        setCurrentPage(1);
     }
 
     function handleSort(e){
@@ -61,22 +62,25 @@ export default function Home (){
     }
 
 
-    function handleFilterVideoGamesByGenres(e){ //arreglar el filter
+    function handleFilterVideoGamesByGenres(e){ 
+        e.preventDefault();
         dispatch(filterVideoGamesByGenres(e.target.value))
     }
 
 
 
-    function handleFilterVideoGamesDB(e){ //arreglar el filter
+    function handleFilterVideoGamesDB(e){ 
+        e.preventDefault();
         dispatch(filterVideoGamesDB(e.target.value))
     }
 
 
     return(
         <div className="Fondo-Home">
+            
 
             <div className="Barra-Superior">
-            <button className="Refresh-Boton"onClick={e => {handleClick(e)}}>Refresh</button>
+            <button className="Refresh-Boton"onClick={e => {handleClick(e)}}>Home</button>
             <Link to='/newvideogame'><button className="Crear-Video">Crear Video Juego</button></Link>
             </div>
             <h1 className="Titulo">VIDEOS JUEGOS</h1>
@@ -87,40 +91,45 @@ export default function Home (){
             <div>
                 <label className="Subtitulo">Orden Alfabetico</label>
                 <select className="Selector" onChange={(e) => handleSort(e)}>
-                    <option value= 'az'>A-Z</option>
-                    <option value= 'za'>Z-A</option>
+                    <option className ="fondo-selector" value= 'az'>A-Z</option>
+                    <option className ="fondo-selector" value= 'za'>Z-A</option>
                 </select>
                 <label className="Subtitulo">Generos</label>
                 <select className="Selector" onChange={(e) => handleFilterVideoGamesByGenres(e)}>
-                    <option value='All'>Todos</option>
-                    {allGenres.map(g => <option key={g.id} value={g.name}>{g.name}</option>)}
+                    <option className ="fondo-selector" value='All'>Todos</option>
+                    {allGenres.map(g => <option className ="fondo-selector" key={g.id} value={g.name}>{g.name}</option>)}
                     
                 </select>
                 <label className="Subtitulo">Rating</label>
                 <select  className="Selector" onChange={(e) => handleSortRating(e)}>
-                    <option value= 'Max-Min'>Max a Min</option>
-                    <option value= 'Min-Max'>Min a Max</option>
+                    <option className ="fondo-selector" value= 'Max-Min'>Max a Min</option>
+                    <option className ="fondo-selector" value= 'Min-Max'>Min a Max</option>
                 </select>
                 <label className="Subtitulo">Juegos creados</label>
                 <select className="Selector" onChange={(e) => handleFilterVideoGamesDB(e)}>
-                    <option value= 'All'>Todos</option>
-                    <option value= 'db'>Juegos Creados</option>
-                    <option value= 'api'>Existentes</option>
+                    <option className ="fondo-selector" value= 'All'>Todos</option>
+                    <option className ="fondo-selector" value= 'db'>Juegos Creados</option>
+                    <option className ="fondo-selector" value= 'api'>Existentes</option>
                 </select>
+                <div className="Contenedor-Reload-Filter" >
+                <button className="Reload-Filter" onClick={e => {handleClick(e)}}>Limpiar Filtros</button>
+                </div>
 
                 <div className="Card-Contenedor">
 
                 {
-                    currentVideoGames && currentVideoGames.map( g => {
+                    currentVideoGames.length > 0 && currentVideoGames.map( g => {
                         return(
-                        <Fragment>
+                        <Fragment key={g.id}>
                         <Link to={'/home/' + g.id}>
 
                         <GameCard name={g.name} 
                                   background_image={g.background_image} 
                                   rating={g.rating} 
                                   genres={g.genres}
-                                  key={g.id} />
+                                  key={g.id}
+                                  />
+                                  
                         </Link>
                         </Fragment>
                                    

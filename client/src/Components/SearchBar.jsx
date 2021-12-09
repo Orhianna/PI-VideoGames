@@ -12,22 +12,25 @@ export default function SearchBar(){
     function handleInputChange(e){
         e.preventDefault()
         setName(e.target.value)
-        console.log(name)  
+        console.log(name) 
         // ver como hacer q despues de la busqueda vuelva el imput a estar vacio
     } 
 
     function handleSubmit(e){
         e.preventDefault()
-        dispatch(getVideoGameByName(name))  
-
+        if(!name){ return alert('Colocar un busqueda')
+        } else {
+        dispatch(getVideoGameByName(name))
+        setName('')
+        document.getElementById("search").value='';}
     }
 
     return(
         <div className="ContenedorSearchBar">
-            <input className="InputSearchBar" type="text"
+            <input id="search" className="InputSearchBar" type="text"
             placeholder= "Buscar Juego..." 
             onChange={(e) => handleInputChange(e)}/>
-            <button className="botonSearchBar" type='submit' onClick={(e) => handleSubmit(e)}>Buscar</button>
+            <button className="botonSearchBar" type='submit' onClick={(e) => handleSubmit(e)}>Buscar🔎</button>
         </div>
     )
 }
